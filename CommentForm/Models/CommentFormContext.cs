@@ -20,5 +20,7 @@ namespace CommentForm.Models
         }
 
         public System.Data.Entity.DbSet<CommentForm.Models.CommentFormModel> CommentFormModels { get; set; }
+
+        public System.Data.Entity.DbSet<CommentForm.Models.ProcedureModel> ProcedureModels { get; set; }
     }
 }

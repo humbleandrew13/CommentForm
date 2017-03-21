@@ -15,6 +15,8 @@ namespace CommentForm.Models
 
         public string Name { get; set; }
         public string Comment { get; set; }
+
+        [Display(Name= "How soon do I need to get this task done?")]
         public int Priority { get; set; }
     }
 }

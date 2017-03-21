@@ -10,124 +10,107 @@ using CommentForm.Models;
 
 namespace CommentForm.Controllers
 {
-    public class CommentFormController : Controller
+    public class ProcedureModelsController : Controller
     {
         private CommentFormContext db = new CommentFormContext();
 
-        // GET: CommentForm
+        // GET: ProcedureModels
         public ActionResult Index()
         {
-            return View(db.CommentFormModels.ToList());
+            return View(db.ProcedureModels.ToList());
         }
 
-        // GET: CommentForm/Details/5
+        // GET: ProcedureModels/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CommentFormModel commentFormModel = db.CommentFormModels.Find(id);
-            if (commentFormModel == null)
+            ProcedureModel procedureModel = db.ProcedureModels.Find(id);
+            if (procedureModel == null)
             {
                 return HttpNotFound();
             }
-
-
-            //Daniel: We can populate our new view model entity with a linq query. We have a lot of flexibility
-            var viewModel = new CommentFormViewModel
-            {
-                //We can reuse the comment form from a couple of lines above
-                CommentForm = commentFormModel,
-                //We don't want to pull back all the procedures, just the one with the same priority as our comment
-                Procedure = (from p in db.ProcedureModels
-                             where p.Priority == commentFormModel.Priority
-                             select p).First()
-            };
-
-            //Daniel: We can no longer pass back a comment form. We need to pass back our new view model
-            return View(viewModel);
-
-            // This was was we retunred before
-            //return View(commentFormModel);
+            return View(procedureModel);
         }
 
-        // GET: CommentForm/Create
+        // GET: ProcedureModels/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CommentForm/Create
+        // POST: ProcedureModels/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Comment,Priority")] CommentFormModel commentFormModel)
+        public ActionResult Create([Bind(Include = "ID,Priority,Title,Details")] ProcedureModel procedureModel)
         {
             if (ModelState.IsValid)
             {
-                db.CommentFormModels.Add(commentFormModel);
+                db.ProcedureModels.Add(procedureModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(commentFormModel);
+            return View(procedureModel);
         }
 
-        // GET: CommentForm/Edit/5
+        // GET: ProcedureModels/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CommentFormModel commentFormModel = db.CommentFormModels.Find(id);
-            if (commentFormModel == null)
+            ProcedureModel procedureModel = db.ProcedureModels.Find(id);
+            if (procedureModel == null)
             {
                 return HttpNotFound();
             }
-            return View(commentFormModel);
+            return View(procedureModel);
         }
 
-        // POST: CommentForm/Edit/5
+        // POST: ProcedureModels/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Comment,Priority")] CommentFormModel commentFormModel)
+        public ActionResult Edit([Bind(Include = "ID,Priority,Title,Details")] ProcedureModel procedureModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(commentFormModel).State = EntityState.Modified;
+                db.Entry(procedureModel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(commentFormModel);
+            return View(procedureModel);
         }
 
-        // GET: CommentForm/Delete/5
+        // GET: ProcedureModels/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CommentFormModel commentFormModel = db.CommentFormModels.Find(id);
-            if (commentFormModel == null)
+            ProcedureModel procedureModel = db.ProcedureModels.Find(id);
+            if (procedureModel == null)
             {
                 return HttpNotFound();
             }
-            return View(commentFormModel);
+            return View(procedureModel);
         }
 
-        // POST: CommentForm/Delete/5
+        // POST: ProcedureModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CommentFormModel commentFormModel = db.CommentFormModels.Find(id);
-            db.CommentFormModels.Remove(commentFormModel);
+            ProcedureModel procedureModel = db.ProcedureModels.Find(id);
+            db.ProcedureModels.Remove(procedureModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

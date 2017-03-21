@@ -157,11 +157,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CommentFormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProcedureModelsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702071943065_InitialCreate.cs" />
+    <Compile Include="Migrations\201702071943065_InitialCreate.Designer.cs">
+      <DependentUpon>201702071943065_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702281903056_DerpDerp.cs" />
+    <Compile Include="Migrations\201702281903056_DerpDerp.Designer.cs">
+      <DependentUpon>201702281903056_DerpDerp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CommentFormContext.cs" />
     <Compile Include="Models\CommentFormModel.cs" />
+    <Compile Include="Models\CommentFormViewModel.cs" />
+    <Compile Include="Models\ProcedureModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +213,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Test.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -221,6 +234,11 @@
     <Content Include="Views\CommentForm\Details.cshtml" />
     <Content Include="Views\CommentForm\Edit.cshtml" />
     <Content Include="Views\CommentForm\Index.cshtml" />
+    <Content Include="Views\ProcedureModels\Create.cshtml" />
+    <Content Include="Views\ProcedureModels\Delete.cshtml" />
+    <Content Include="Views\ProcedureModels\Details.cshtml" />
+    <Content Include="Views\ProcedureModels\Edit.cshtml" />
+    <Content Include="Views\ProcedureModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -230,6 +248,14 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702071943065_InitialCreate.resx">
+      <DependentUpon>201702071943065_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702281903056_DerpDerp.resx">
+      <DependentUpon>201702281903056_DerpDerp.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
